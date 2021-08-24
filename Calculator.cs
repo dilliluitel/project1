@@ -8,6 +8,8 @@ namespace Project1
     {
        public int value1, value2;     //user entered values for arithmetic operation
        public  string operation;
+
+        //Calculator constructor 
        public Calculator(int val1, int val2, string op)
         {
             value1 = val1;
@@ -25,7 +27,6 @@ namespace Project1
             Console.Write("Enter an arthimatic operation \n[Add(+), Subtract(-), Multiply(*) or Divide(/)] : ");
             operation = (Console.ReadLine()).ToLower();
 
-           // Console.WriteLine(value1 + " " + value2 + " " + operation);
         }
         public void calculate()
         {
@@ -60,7 +61,7 @@ namespace Project1
             return ((next == "Y" || next == "YES") ? true : false); 
         }
 
-        /*public string Calculate(string operation, int value1, int value2)
+        /*public string calculate()
         {
             string result = "";
             switch (operation)

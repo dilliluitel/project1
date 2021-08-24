@@ -8,11 +8,9 @@ namespace Project1
         static void Main(string[] args)
         {
             int value1 = 0, value2 = 0;     //user entered values for arithmetic operation
-            string operation = null;
-            string next;
+            string operation = null, next = null;
 
             Calculator myCalculator = new Calculator(value1, value2, operation);
-
             do
             {
                 try
@@ -33,10 +31,17 @@ namespace Project1
                     Console.WriteLine("Division by Zero cannot be performed.");
                 }
 
-                Console.WriteLine("\nWould you like to perform another calculation?");
-                Console.Write("press \"Y\" for yes and \"N\" for no : ");
+                try
+                {
+                    Console.WriteLine("\nWould you like to perform another calculation?");
+                    Console.Write("press \"Y\" for yes and \"N\" for no : ");
 
-               next = (Console.ReadLine()).Trim().ToUpper();
+                    next = (Console.ReadLine()).Trim().ToUpper();
+                }
+                catch (FormatException e) 
+                {
+                    Console.WriteLine("Invalid input, expecting a string literal");
+                }
             }
             while (myCalculator.doContinue(next));
         }
