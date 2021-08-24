@@ -7,25 +7,32 @@ namespace Project1
     {
         static void Main(string[] args)
         {
-            int value1, value2;     //user entered values for arithmetic operation
-            decimal result;
-            string operation;
+            int value1 = 0, value2 = 0;     //user entered values for arithmetic operation
+            //decimal result;
+            string operation = null;
             bool contd;                     //continue
 
             Calculator myCalculator = new Calculator();
 
             do
             {
-                Console.Write("Enter your first number : ");
-                value1 = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    Console.Write("Enter your first number : ");
+                    value1 = Convert.ToInt32(Console.ReadLine());
 
-                Console.Write("Enter your second number : ");
-                value2 = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("Enter your second number : ");
+                    value2 = Convert.ToInt32(Console.ReadLine());
 
-                Console.Write("Enter an arthimatic operation \n[Add(+), Subtract(-), Multiply(*) or Divide(/)] : ");
-                operation = (Console.ReadLine()).ToLower();
+                    Console.Write("Enter an arthimatic operation \n[Add(+), Subtract(-), Multiply(*) or Divide(/)] : ");
+                    operation = (Console.ReadLine()).ToLower();
 
-                // myCalculator.userInput(value1, value2, operation);  //cannot get this working, will need investigation
+                    // myCalculator.userInput(value1, value2, operation);  //cannot get this working, won't takes the user input values instead keeps reading the initial during the initialization
+                }
+                catch (FormatException Ex) 
+                {
+                    Console.WriteLine("Invalid user Input. Please, enter a valid integer.");
+                }
 
                 try
                 {
@@ -39,11 +46,7 @@ namespace Project1
                 Console.WriteLine("\nWould you like to perform another calculation?");
                 Console.Write("press \"Y\" for yes and \"N\" for no : ");
 
-                string next = (Console.ReadLine()).ToUpper();
-                //coudn't get the trimmer to work here, not sure why?
-                //string next = (Console.ReadLine()).Trim().ToUpper();
-                //Console.WriteLine(next);
-
+                string next = (Console.ReadLine()).Trim().ToUpper();
                 contd = myCalculator.doContinue(next);
             }
             while (contd);
