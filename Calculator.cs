@@ -4,45 +4,55 @@ using System.Text;
 
 namespace Project1
 {
-    class Calculator
+   public class Calculator
     {
-        public void userInput(int val1, int val2, string op)
+       public int value1, value2;     //user entered values for arithmetic operation
+       public  string operation;
+       public Calculator(int val1, int val2, string op)
+        {
+            value1 = val1;
+            value2 = val2;
+            operation = op;
+        }
+        public void userInput()
         {
             Console.Write("Enter your first number : ");
-            val1 = Convert.ToInt32(Console.ReadLine());
+            value1 = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("Enter your second number : ");
-            val2 = Convert.ToInt32(Console.ReadLine());
+            value2 = Convert.ToInt32(Console.ReadLine());
 
             Console.Write("Enter an arthimatic operation \n[Add(+), Subtract(-), Multiply(*) or Divide(/)] : ");
-            op = (Console.ReadLine()).ToLower();
+            operation = (Console.ReadLine()).ToLower();
+
+           // Console.WriteLine(value1 + " " + value2 + " " + operation);
         }
-        public void calculate(int val1, int val2, String op)
+        public void calculate()
         {
             decimal result = 0;
-            switch (op)
+            switch (operation)
             {
                 case "+":
                 case "add":
-                    result = val1 + val2;
+                    result = value1 + value2;
                     break;
 
                 case "-":
                 case "subtract":
-                    result = val1 - val2;
+                    result = value1 - value2;
                     break;
 
                 case "*":
                 case "multiply":
-                    result = val1 * val2;
+                    result = value1 * value2;
                     break;
 
                 case "/":
                 case "divide":
-                    result = (decimal)val1 / val2;
+                    result = (decimal)value1 / value2;
                     break;
             }
-            Console.WriteLine($"{val1} {op} {val2} = {result}");
+            Console.WriteLine($"{value1} {operation} {value2} = {result}");
         }
 
         public bool doContinue(string next)
